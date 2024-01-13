@@ -22,8 +22,6 @@ class MemberServiceTest {
         //when
         Long saveId = memberService.join(member);
 
-
-
         //then
        Member findMember = memberService.findOne(saveId).get();
        assertThat(member.getName()).isEqualTo(findMember.getName());
@@ -31,16 +29,18 @@ class MemberServiceTest {
     }
 
     @Test
-    public void 중복_회원_예외() throws Exception {
-        //Given
+    public void 중복_회원_예외() {
+        // Given
         Member member1 = new Member();
         member1.setName("spring");
         Member member2 = new Member();
         member2.setName("spring");
-        //When
+
+        // When
         memberService.join(member1);
-        IllegalStateException e = assertThrows(IllegalStateException.class,
-                () -> memberService.join(member2));//예외가 발생해야 한다.
+
+        // Then
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));  // 예외 타입 변경
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
     }
     @Test
