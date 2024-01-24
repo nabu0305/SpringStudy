@@ -4,11 +4,13 @@ import com.Study.StudySpring.domain.Member;
 import com.Study.StudySpring.repository.MemberRepository;
 import com.Study.StudySpring.repository.MemoryMemberRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
