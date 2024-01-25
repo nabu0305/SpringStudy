@@ -1,5 +1,6 @@
 package com.Study.StudySpring;
 
+import com.Study.StudySpring.aop.TimeTraceAop;
 import com.Study.StudySpring.repository.*;
 import com.Study.StudySpring.service.MemberService;
 import jakarta.persistence.EntityManager;
@@ -23,6 +24,12 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
+
+// 이렇게 쓰면 aop쓰는구나 알수있다
+//    @Bean
+//    public TimeTraceAop timeTraceAop(){
+//        return new TimeTraceAop();
+//    }
 //    @Bean
 //    public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
